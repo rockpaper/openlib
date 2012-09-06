@@ -123,4 +123,21 @@ class Validate
         }
         return $data;
     }
+    
+     /**
+     * Checks if a string is in valid date time format
+     * @param string $datetime
+     * @return boolean
+     */
+    public static function is_valid_datetime($datetime)
+    {
+        if (preg_match("/^(\d{4})-(\d{2})-(\d{2}) ([01][0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])$/", $datetime, $matches))
+        {
+            if (checkdate($matches[2], $matches[3], $matches[1]))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
 }
