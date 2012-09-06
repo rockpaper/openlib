@@ -124,7 +124,7 @@ class Validate
         return $data;
     }
     
-     /**
+    /**
      * Checks if a string is in valid date time format
      * @param string $datetime
      * @return boolean
@@ -139,5 +139,16 @@ class Validate
             }
         }
         return false;
+    }
+    
+    /**
+     * Validates common URL patterns
+     * @param string $url
+     * @return boolean
+     */
+    public static function is_valid_url($url)
+    {
+        $pattern = '/^(([\w]+:)?\/\/)?(([\d\w]|%[a-fA-f\d]{2,2})+(:([\d\w]|%[a-fA-f\d]{2,2})+)?@)?([\d\w][-\d\w]{0,253}[\d\w]\.)+[\w]{2,4}(:[\d]+)?(\/([-+_~.\d\w]|%[a-fA-f\d]{2,2})*)*(\?(&amp;?([-+_~.\d\w]|%[a-fA-f\d]{2,2})=?)*)?(#([-+_~.\d\w]|%[a-fA-f\d]{2,2})*)?$/';
+        return preg_match($pattern, $url);
     }
 }
